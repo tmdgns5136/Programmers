@@ -9,6 +9,7 @@ class Solution {
         while(true){
             boolean visited[][] = new boolean[m][n];
             boolean hasDeleted = false; 
+            // 2x2찾기
             for(int i = 0; i < m-1; i++){
                 for(int j = 0; j<n-1; j++){
                     char block = b[i][j];
@@ -25,6 +26,7 @@ class Solution {
             if(!hasDeleted){
                 break;
             }
+            // 블록 없애기
             for(int i = 0; i<m; i++){
                 for(int j = 0; j<n; j++){
                     if(visited[i][j]){
@@ -33,6 +35,7 @@ class Solution {
                     }
                 }
             }
+            // 열을 반복하며 아래부터 블록들 list에 추가
             for(int i = 0; i < n; i++){
                 List<Character>list = new ArrayList<>();
                 for(int j = m-1; j>-1; j--){
@@ -40,6 +43,7 @@ class Solution {
                         list.add(b[j][i]);
                     }
                 }
+                // 리스트에 있는 값들 열 아래서부터 채워넣기
                 int idx = 0;
                 for(int j = m-1; j>-1; j--){
                     if(list.size() > idx){
