@@ -2,8 +2,6 @@ import java.util.*;
 class Solution {
     public int solution(int[] arrayA, int[] arrayB) {
         int answer = 0;  
-        Arrays.sort(arrayA);
-        Arrays.sort(arrayB);
         int a = arrayA[0];
         int b = arrayB[0];
         int checkA = 1;
