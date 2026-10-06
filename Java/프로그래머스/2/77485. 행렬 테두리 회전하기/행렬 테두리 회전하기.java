@@ -11,7 +11,6 @@ class Solution {
         int k = 0;
         Deque<Integer>queue = new LinkedList<>();
         for(int[] query : queries){
-            queue.clear();
             int x1 = query[0] - 1;
             int y1 = query[1] - 1;
             int x2 = query[2] - 1;
