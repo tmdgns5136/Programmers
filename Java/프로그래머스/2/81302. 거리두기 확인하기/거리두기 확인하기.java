@@ -48,7 +48,10 @@ class Solution {
                 int ny = dy[i] + curY;
                 if(nx >= 0 && nx < p.length && ny >= 0 && ny < p[0].length && visited[nx][ny] == 0){
                     visited[nx][ny] = 1;
+                    
+                    // 파티션 있는 경우
                     if(p[nx][ny] == 'X') continue;
+                    // 응시자 있는 경우 false
                     if(p[nx][ny] == 'P') return false;
                     queue.add(new int[]{nx, ny, dist+1});
                 }
