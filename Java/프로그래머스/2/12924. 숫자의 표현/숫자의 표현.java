@@ -1,17 +1,10 @@
+// n의 홀수 약수 개수를 구하면 연속된 자연수의 합의 개수
 class Solution {
     public int solution(int n) {
-        int answer = 1;
-        for(int i = 1; i <= n/2; i++){
-            int sum = i;
-            for(int j = i + 1; j <= n; j++){
-                sum += j;
-                if(sum == n){
-                    answer++;
-                    break;
-                }
-                if(sum > n){
-                    break;
-                }
+        int answer = 0;
+        for(int i = 1; i <= n; i+=2){
+            if(n % i == 0){
+                answer++;
             }
         }
         return answer;
