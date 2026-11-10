@@ -2,15 +2,18 @@ import java.util.*;
 class Solution {
     public int solution(int k, int[] tangerine) {
         int answer = 0;
-        int arr[] = new int[10000001];
+        HashMap<Integer, Integer>map = new HashMap<>();
         for(int t : tangerine){
-            arr[t]++;
+            map.put(t, map.getOrDefault(t, 0) + 1);
         }
-        Arrays.sort(arr);
-        int x = arr.length - 1;
-        while(k > 0){
-            k -= arr[x--];
+        List<Integer>list = new ArrayList<>(map.values());
+        list.sort(Collections.reverseOrder());
+        for(int c : list){
             answer++;
+            k -= c;
+            if(k < 1){
+                break;
+            }
         }
         return answer;
     }
