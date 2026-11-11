@@ -18,17 +18,10 @@ class Solution {
             if(i % n == 0){
                 answer[1]++;
             }
-            if(last != first){
+            if(last != first || set.contains(words[i])){
                 return answer;
             }
-            else{
-                if(set.contains(words[i])){
-                    return answer;
-                }
-                else{
-                    set.add(words[i]);
-                }
-            }
+            set.add(words[i]);
             last = words[i].charAt(words[i].length()-1);
         }
         if(set.size() == words.length){
