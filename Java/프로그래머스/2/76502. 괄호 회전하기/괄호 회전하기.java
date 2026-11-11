@@ -2,13 +2,14 @@ import java.util.*;
 class Solution {
     public int solution(String s) {
         int answer = 0;
+        Stack<Character>stack = new Stack<>();
         for(int i = 0; i < s.length(); i++){
-            if(check(s, i)) answer++;
+            stack.clear();
+            if(check(s, i, stack)) answer++;
         }
         return answer;
     }
-    private boolean check(String s, int i){
-        Stack<Character>stack = new Stack<>();
+    private boolean check(String s, int i, Stack<Character>stack){
         for(int j = 0; j < s.length(); j++){
             char c = s.charAt((i+j)%s.length());
             if(c == '[' || c == '(' || c == '{'){
