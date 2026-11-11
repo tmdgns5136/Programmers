@@ -24,10 +24,6 @@ class Solution {
             set.add(words[i]);
             last = words[i].charAt(words[i].length()-1);
         }
-        if(set.size() == words.length){
-            return new int[]{0, 0};
-        }
-
-        return answer;
+        return new int[]{0, 0};
     }
 }
