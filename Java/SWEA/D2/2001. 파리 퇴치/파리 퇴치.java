@@ -60,27 +60,21 @@ class Solution
 		
 			int n = sc.nextInt();
 			int m = sc.nextInt();
-			int arr[][] = new int[n][n];
-			for(int i = 0; i < n; i++) {
-				for(int j = 0; j < n; j++) {
-					arr[i][j] = sc.nextInt();
-				}
-			}
-			int answer = 0;
             int max = 0;
-			for(int i = 0; i <= n-m; i++) {
-				for(int j = 0; j <= n-m; j++) {
-                    max = 0;
-					for(int w = 0; w < m; w++) {
-						for(int k = 0; k < m; k++) {
-							max += arr[i+w][j+k];
-						}
-					}
-					answer = Math.max(max, answer);
-				}
-			}
+            int prefix[][] = new int[n+1][n+1];
+			for(int i = 1; i <= n; i++){
+            	for(int j = 1; j <=n; j++){
+                 	prefix[i][j] = sc.nextInt() + prefix[i-1][j] + prefix[i][j-1] - prefix[i-1][j-1];   
+                }
+            }
+			for(int i = m; i <= n; i++){
+             	for(int j = m; j <=n; j++){
+                 	int sum = prefix[i][j] - prefix[i-m][j] - prefix[i][j-m] + prefix[i-m][j-m];
+                    max = Math.max(sum, max);
+                }
+            }
 			
-			System.out.println("#" + test_case + " " + answer);
+			System.out.println("#" + test_case + " " + max);
 
 		}
 	}
