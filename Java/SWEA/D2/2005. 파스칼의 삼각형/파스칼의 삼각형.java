@@ -25,7 +25,7 @@
 //System.out.println(var);		       				   // 문자열 1개 출력하는 예제
 //System.out.println(AB);		       				     // long 변수 1개 출력하는 예제
 /////////////////////////////////////////////////////////////////////////////////////////////
-import java.util.Scanner;
+import java.util.*;
 import java.io.FileInputStream;
 
 /*
@@ -58,17 +58,23 @@ class Solution
 		for(int test_case = 1; test_case <= T; test_case++)
 		{
 		
-                int n = sc.nextInt();
+               int n = sc.nextInt();
+			int dp[][] = new int[n][n];
+			for(int i = 0; i < n; i++){
+            	Arrays.fill(dp[i], 1);
+            }
+			
+			for(int i = 2; i < n; i++) {
+				for(int j = 1; j < i; j++) {
+					dp[i][j] = dp[i-1][j-1] + dp[i-1][j];
+				}
+			}
 			System.out.println("#" + test_case);
 			for(int i = 0; i < n; i++) {
-				// 이전 값
-				int val = 1;
 				for(int j = 0; j <= i; j++) {
-					System.out.print(val + " ");
-					// 다음 값 = 이전 값 x(n-r+1)/r
-					val = val * (i-j) / (j+1);
+					System.out.print(dp[i][j] + " ");
 				}
-				System.out.println();
+                System.out.println();
 			}
 
 		}
