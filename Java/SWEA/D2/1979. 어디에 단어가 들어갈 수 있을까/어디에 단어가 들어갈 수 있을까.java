@@ -71,31 +71,30 @@ class Solution
 			
 			for(int i = 0; i < n; i++) {
 				for(int j = 0; j < n; j++) {
+                    int sum1 = 1;
+                    int sum2 = 1;
 					if(arr[i][j] == 1) {
+                        // 우측
 						if(j == 0 || arr[i][j - 1] == 0) {
-							DFS(arr, 1, k, i, j, 0);
+							for(int x = j+1; x < n; x++){
+                            	if(arr[i][x] == 1) sum1++;
+                                else break;
+                            }
 						}
+                        // 아래
 						if(i == 0 || arr[i-1][j] == 0) {
-							DFS(arr, 1, k, i, j, 1);
+							for(int x = i+1; x < n; x++){
+                            	if(arr[x][j] == 1) sum2++;
+                                else break;
+                            }
 						}
+                        if(sum1 == k) answer++;
+                        if(sum2 == k) answer++;
 						
 					}
 				}
 			}
 			System.out.println("#" + test_case + " " + answer);
 		}
-	}
-    private static void DFS(int arr[][], int depth, int k, int i, int j, int dir) {
-		int dx[] = {0, 1};
-		int dy[] = {1, 0};
-		int nx = i + dx[dir];
-		int ny = j + dy[dir];
-		if(nx >= 0 && nx < arr.length && ny >= 0 && ny < arr.length  && arr[nx][ny] == 1) {
-			DFS(arr, depth+1, k, nx, ny, dir);
-		}
-		else {
-			if(depth == k) answer++;
-		}
-		return;
 	}
 }
